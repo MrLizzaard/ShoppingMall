@@ -1,15 +1,17 @@
-//
+// Fetch the items from te JSON file
 function loadItems() {
   return fetch("data/data.json")
     .then((response) => response.json())
     .then((json) => json.items);
 }
 
+// Update the list with the given items
 function displayItems(items) {
   const container = document.querySelector(".items");
   container.innerHTML = items.map((item) => createHTMLString(item)).join("");
 }
 
+// Create HTML list item from the given data item
 function createHTMLString(item) {
   return `
   <li class="item">
@@ -18,11 +20,29 @@ function createHTMLString(item) {
   </li>
   `;
 }
+
+function setEventListeners() {
+  const btns = document.querySelectorAll("button");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const items = document.querySelectorAll(".item");
+      let target = e.target;
+      if (target.className === "imgBtn") {
+        target = target.parentNode;
+      }
+      let length = target.classList.length;
+      console.log(target.classList[length - 1]);
+      items.forEach((item) => {
+        console.log(item.childNodes.alt);
+      });
+    });
+  });
+}
+
 // main
 loadItems()
   .then((items) => {
-    console.log(items);
     displayItems(items);
-    // setEventListeners(items);
+    setEventListeners();
   })
   .catch(console.log);
