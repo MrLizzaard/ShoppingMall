@@ -14,7 +14,7 @@ function displayItems(items) {
 // Create HTML list item from the given data item
 function createHTMLString(item) {
   return `
-  <li class="item">
+  <li class="item ${item.type} ${item.color}">
     <img src="${item.image}" alt="${item.type}" class="item__thumbnail" />
     <span class="item__description">${item.gender}, ${item.size}</span>
   </li>
@@ -33,7 +33,11 @@ function setEventListeners() {
       let length = target.classList.length;
       console.log(target.classList[length - 1]);
       items.forEach((item) => {
-        console.log(item.childNodes);
+        if (item.classList.contains(target.classList[length - 1])) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
       });
     });
   });
