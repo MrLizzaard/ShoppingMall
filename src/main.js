@@ -33,7 +33,7 @@ function setEventListeners() {
       let length = target.classList.length;
       console.log(target.classList[length - 1]);
       items.forEach((item) => {
-        console.log(item.childNodes.alt);
+        console.log(item.childNodes);
       });
     });
   });
