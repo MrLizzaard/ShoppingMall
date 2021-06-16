@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Online Shopping</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="main.js" defer></script>
+    <script src="src/main.js" defer></script>
   </head>
   <body>
-    <!-- logo -->
-    <div class="logo"><img src="/imgs/logo.png" alt="logo" /></div>
-    <!-- button -->
-    <div class="icons">
-      <a href="#" class="t"><img src="/imgs/blue_t.png" alt="shirt" /></a><a href="#" class="P"><img src="/imgs/blue_p.png" alt="pants" /></a
-      ><a href="#" class="s"><img src="/imgs/blue_s.png" alt="skirt" /></a> <a href="#" class="blue"><span>Blue</span></a
-      ><a href="#" class="yellow"><span>Yellow</span></a
-      ><a href="#" class="pink"><span>Pink</span></a>
+    <!-- Logo -->
+    <img src="img/logo.png" alt="Logo" class="logo" />
+    <!-- Buttons -->
+    <div class="buttons">
+      <button class="btn tshirt">
+        <img src="img/blue_t.png" alt="tshirt" class="imgBtn" data-key="type" data-value="tshirt" />
+      </button>
+      <button class="btn pants">
+        <img src="img/blue_p.png" alt="pants" class="imgBtn" data-key="type" data-value="pants" />
+      </button>
+      <button class="btn skirt">
+        <img src="img/blue_s.png" alt="skirt" class="imgBtn" data-key="type" data-value="skirt" />
+      </button>
+      <button class="btn colorBtn blue" data-key="color" data-value="blue">Blue</button>
+      <button class="btn colorBtn yellow" data-key="color" data-value="yellow">Yellow</button>
+      <button class="btn colorBtn pink" data-key="color" data-value="pink">Pink</button>
     </div>
     <!-- Items -->
-    <ul class="scrolls"></ul>
+    <ul class="items"></ul>
   </body>
 </html>
