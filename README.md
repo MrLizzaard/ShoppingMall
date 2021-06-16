@@ -4,6 +4,8 @@ vanilla JS practice
 
 HTML, CSS, Vanila JS
 
+filter 기능 구현
+
 ---
 
 ### 메인 화면
