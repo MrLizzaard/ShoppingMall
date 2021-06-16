@@ -14,39 +14,35 @@ function displayItems(items) {
 // Create HTML list item from the given data item
 function createHTMLString(item) {
   return `
-  <li class="item ${item.type} ${item.color}">
-    <img src="${item.image}" alt="${item.type}" class="item__thumbnail" />
+  <li class="item">
+    <img src="${item.image}" alt="${item.type}}" class="item__thumbnail" />
     <span class="item__description">${item.gender}, ${item.size}</span>
   </li>
   `;
 }
 
-function setEventListeners() {
-  const btns = document.querySelectorAll("button");
-  btns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const items = document.querySelectorAll(".item");
-      let target = e.target;
-      if (target.className === "imgBtn") {
-        target = target.parentNode;
-      }
-      let length = target.classList.length;
-      console.log(target.classList[length - 1]);
-      items.forEach((item) => {
-        if (item.classList.contains(target.classList[length - 1])) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    });
-  });
+function onButtonClick(event, items) {
+  const datset = event.target.dataset;
+  const key = datset.key;
+  const value = datset.value;
+
+  if (key == null || value == null) {
+    return;
+  }
+  displayItems(items.filter((item) => item[key] === value));
+}
+
+function setEventListeners(items) {
+  const logo = document.querySelector(".logo");
+  const buttons = document.querySelector(".buttons");
+  logo.addEventListener("click", () => displayItems(items));
+  buttons.addEventListener("click", (event) => onButtonClick(event, items));
 }
 
 // main
 loadItems()
   .then((items) => {
     displayItems(items);
-    setEventListeners();
+    setEventListeners(items);
   })
   .catch(console.log);
